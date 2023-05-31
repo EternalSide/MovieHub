@@ -28,13 +28,18 @@ export const tmdbApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    // Get movies by [type]
+    //Получаем жанры
+    getGenres: builder.query({
+      query: () => `/genre/movie/list?language=ru`,
+    }),
+
+    // Популярные
     getMovies: builder.query({
       query: () => {
-        return `/movie/popular?language=en-US&page=${page}`;
+        return `/movie/popular?language=ru-RUpage=${page}`;
       },
     }),
   }),
 });
 
-export const { useGetMoviesQuery } = tmdbApi;
+export const { useGetGenresQuery, useGetMoviesQuery } = tmdbApi;

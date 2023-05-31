@@ -1,5 +1,6 @@
 .movie {
   padding: 10px;
+  text-align: center;
 }
 .movie__title {
   color: white;
@@ -10,4 +11,19 @@
   margin-top: 10px;
   margin-bottom: 0;
   text-align: center;
+}
+.movie__links {
+  align-items: center;
+  font-weight: bolder;
+}
+
+.movie__image {
+  border-radius: 20px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.movie__image:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+  opacity: 0.8;
 }

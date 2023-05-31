@@ -59,7 +59,7 @@ function Navbar({ isDarkTheme, changeTheme }) {
                 color="inherit"
                 className="navbar__profile-button"
               >
-                {!isMobile && <>My Movies &nbsp;</>}
+                {!isMobile && <>Мои фильмы &nbsp;</>}
                 <Avatar
                   style={{ width: 30, height: 30 }}
                   alt="Profile"

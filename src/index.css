@@ -2,3 +2,7 @@ body {
   background-color: black;
   color: white;
 }
+a {
+  text-decoration: none;
+  color: rgb(175, 14, 14);
+}

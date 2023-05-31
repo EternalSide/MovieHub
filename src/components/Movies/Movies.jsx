@@ -11,7 +11,7 @@ import MovieList from "../MovieList/MovieList";
 function Movies() {
   //RTQ QUERY
   const { data, error, isFetching } = useGetMoviesQuery();
-  console.log(data);
+
   if (isFetching) {
     return (
       <Box display="flex" justifyContent="center">
@@ -19,18 +19,23 @@ function Movies() {
       </Box>
     );
   }
-  if (!data.results.length) {
+
+  if (error)
     return (
-      <Box display="flex" alignItems="center" mt="20px">
-        <Typography variant="h4">
-          По вашему запросу ничего не найдено.
-          <br />
-          Попробуйте найти что-нибудь другое
-        </Typography>
-      </Box>
+      <>
+        <h2>Произошла ошибка!</h2>
+        <p>
+          Вероятнее всего у вас не включен VPN, так как сервис themoviedb.org не
+          работает в России, рекомендуем установить: &nbsp;
+          <a
+            target="_blank"
+            href="https://chrome.google.com/webstore/detail/free-vpn-for-chrome-vpn-p/majdfhpaihoncoakbjgbdhglocklcgno?hl=ru"
+          >
+            Free Vpn
+          </a>
+        </p>
+      </>
     );
-  }
-  if (error) return "Ой! Что-то не так, мы скоро это поправим :)";
   return (
     <div>
       <MovieList movies={data} />
