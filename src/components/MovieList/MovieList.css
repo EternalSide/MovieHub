@@ -1,0 +1,11 @@
+.movielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: auto;
+}
+@media screen and (max-width: 660px) {
+  .movielist {
+    justify-content: center;
+  }
+}

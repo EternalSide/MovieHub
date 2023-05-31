@@ -4,9 +4,12 @@ import App from "./components/App";
 import "./index.css";
 const container = document.getElementById("root");
 const root = createRoot(container);
-
+import { Provider } from "react-redux";
+import store from "./app/store";
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
 );

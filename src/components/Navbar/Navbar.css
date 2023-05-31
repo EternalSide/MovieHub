@@ -1,0 +1,22 @@
+.navbar__toolbar {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 240px;
+}
+.nav__drawer {
+  width: 240px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 600px) {
+  .navbar__toolbar {
+    margin-left: 0px;
+  }
+}
+.nav__drawer-paper {
+  width: 240px;
+}
+.navbar__profile-button:hover {
+  color: white !important;
+  text-decoration: none;
+}

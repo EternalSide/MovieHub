@@ -6,6 +6,16 @@
   height: 70px;
 }
 .app__content {
+  margin-left: 240px;
+}
+.app__content {
   flex-grow: 1;
   padding: 2em;
+}
+
+@media screen and (max-width: 660px) {
+  .app__content {
+    margin-left: 0px;
+    padding-left: 8px;
+  }
 }

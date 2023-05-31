@@ -1,0 +1,13 @@
+.movie {
+  padding: 10px;
+}
+.movie__title {
+  color: white;
+  text-overflow: ellipsis;
+  width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}

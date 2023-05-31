@@ -1,0 +1,13 @@
+.sidebar__link {
+  display: flex;
+  justify-content: center;
+  padding: 10% 0%;
+}
+.sidebar__image {
+  width: 70%;
+}
+
+.sidebar__links {
+  color: white;
+  text-decoration: none;
+}
