@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
-const page = 1;
+
 // const options = {
 //     method: 'GET',
 //     headers: {
@@ -35,11 +35,35 @@ export const tmdbApi = createApi({
 
     // Популярные
     getMovies: builder.query({
-      query: () => {
+      query: ({ genreIdOrCategoryName, page, searchQuery }) => {
+        //По названию (поиску)
+        if (searchQuery) {
+          return `/search/movie?query=${searchQuery}&language=ru-RU&page=${page}`;
+        }
+
+        //Фильмы по названию и категории
+        if (genreIdOrCategoryName && typeof genreIdOrCategoryName === "string") {
+          return `movie/${genreIdOrCategoryName}?language=ru-RU&page=${page}`;
+        }
+        //Фильмы по жанру
+        if (genreIdOrCategoryName && typeof genreIdOrCategoryName === "number") {
+          return `discover/movie?include_adult=false&include_video=false&language=ru-RU&page=${page}&sort_by=popularity.desc&with_genres=${genreIdOrCategoryName}`;
+        }
+        //Популярные
         return `/movie/popular?language=ru-RUpage=${page}`;
+      },
+    }),
+    //Получить фильм для MovieInfo
+    getMovie: builder.query({
+      query: (id) => `movie/${id}?append_to_response=videos,credits&language=ru-RU&`,
+    }),
+    //Похожие фильмы
+    getRecommendations: builder.query({
+      query: ({ list, movieId }) => {
+        return `/movie/${movieId}/${list}`;
       },
     }),
   }),
 });
 
-export const { useGetGenresQuery, useGetMoviesQuery } = tmdbApi;
+export const { useGetGenresQuery, useGetMoviesQuery, useGetMovieQuery, useGetRecommendationsQuery } = tmdbApi;

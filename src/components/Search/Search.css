@@ -1,0 +1,17 @@
+.search {
+  border: none !important;
+}
+.search__input {
+  border-radius: 10px;
+}
+@media screen and (max-width: 660px) {
+  .search {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .search__input {
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+}

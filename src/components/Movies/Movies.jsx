@@ -8,9 +8,20 @@ import {
 import { useSelector } from "react-redux";
 import { useGetMoviesQuery } from "../../app/services/TMDDB";
 import MovieList from "../MovieList/MovieList";
+import Error from "../Error";
+import Banner from "../Banner/Banner";
+import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 function Movies() {
-  //RTQ QUERY
-  const { data, error, isFetching } = useGetMoviesQuery();
+  const [page, setPage] = useState(1);
+  const { genreIdOrCategoryName, searchQuery } = useSelector(
+    (state) => state.currentGenreOrCategory
+  );
+
+  const { data, error, isFetching } = useGetMoviesQuery({
+    genreIdOrCategoryName,
+    page,
+    searchQuery,
+  });
 
   if (isFetching) {
     return (
@@ -20,26 +31,13 @@ function Movies() {
     );
   }
 
-  if (error)
-    return (
-      <>
-        <h2>Произошла ошибка!</h2>
-        <p>
-          Вероятнее всего у вас не включен VPN, так как сервис themoviedb.org не
-          работает в России, рекомендуем установить: &nbsp;
-          <a
-            target="_blank"
-            href="https://chrome.google.com/webstore/detail/free-vpn-for-chrome-vpn-p/majdfhpaihoncoakbjgbdhglocklcgno?hl=ru"
-          >
-            Free Vpn
-          </a>
-        </p>
-      </>
-    );
+  if (error) return <Error />;
   return (
-    <div>
+    <>
+      {/* <Banner /> */}
+
       <MovieList movies={data} />
-    </div>
+    </>
   );
 }
 

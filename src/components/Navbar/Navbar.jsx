@@ -1,30 +1,24 @@
 import { useState } from "react";
 import "./Navbar.css";
 //MUI
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Drawer,
-  Button,
-  Avatar,
-  useMediaQuery,
-} from "@mui/material";
+import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import Sidebar from "../Sidebar/Sidebar";
+import { fetchToken } from "../../app/utils";
 //ROUTER
 import { Link } from "react-router-dom";
+import Search from "../Search/Search";
 function Navbar({ isDarkTheme, changeTheme }) {
   const isMobile = useMediaQuery("(max-width:600px)");
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar className="navbar" position="fixed">
         <Toolbar className="navbar__toolbar">
           {isMobile && (
             <IconButton
@@ -38,27 +32,17 @@ function Navbar({ isDarkTheme, changeTheme }) {
             </IconButton>
           )}
 
-          <IconButton
-            onClick={() => changeTheme()}
-            color="inherit"
-            sx={{ ml: 1 }}
-          >
+          <IconButton onClick={() => changeTheme()} color="inherit" sx={{ ml: 1 }}>
             {isDarkTheme ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
-          {!isMobile && "Введите запрос"}
+          {!isMobile && <Search />}
           <div>
             {!isAuthenticated ? (
-              <Button onClick={() => {}} color="inherit">
-                Login &nbsp;
+              <Button className="navbar__login-button" onClick={fetchToken} color="inherit">
+                Войти
               </Button>
             ) : (
-              <Button
-                component={Link}
-                to={`/profile/:id`}
-                onClick={() => {}}
-                color="inherit"
-                className="navbar__profile-button"
-              >
+              <Button component={Link} to={`/profile/:id`} onClick={() => {}} color="inherit" className="navbar__profile-button">
                 {!isMobile && <>Мои фильмы &nbsp;</>}
                 <Avatar
                   style={{ width: 30, height: 30 }}
@@ -68,7 +52,7 @@ function Navbar({ isDarkTheme, changeTheme }) {
               </Button>
             )}
           </div>
-          {isMobile && "Search..."}
+          {isMobile && <Search />}
         </Toolbar>
       </AppBar>
       <div>
@@ -83,21 +67,11 @@ function Navbar({ isDarkTheme, changeTheme }) {
               classes={{ paper: "nav__drawer-paper" }}
               ModalProps={{ keepMounted: true }}
             >
-              <Sidebar
-                isDarkTheme={isDarkTheme}
-                setMobileOpen={setMobileOpen}
-              />
+              <Sidebar className="sidebar" isDarkTheme={isDarkTheme} setMobileOpen={setMobileOpen} />
             </Drawer>
           ) : (
-            <Drawer
-              classes={{ paper: "nav__drawer-paper" }}
-              variant="permanent"
-              open
-            >
-              <Sidebar
-                isDarkTheme={isDarkTheme}
-                setMobileOpen={setMobileOpen}
-              />
+            <Drawer classes={{ paper: "nav__drawer-paper" }} variant="permanent" open>
+              <Sidebar isDarkTheme={isDarkTheme} setMobileOpen={setMobileOpen} />
             </Drawer>
           )}
         </nav>

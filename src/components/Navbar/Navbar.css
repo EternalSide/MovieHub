@@ -4,9 +4,16 @@
   justify-content: space-between;
   margin-left: 240px;
 }
+.navbar {
+  background-color: #1a1a1c !important;
+  background-image: none !important;
+}
 .nav__drawer {
   width: 240px;
   flex-shrink: 0;
+}
+.navbar__login-button {
+  background-color: red !important;
 }
 @media screen and (max-width: 600px) {
   .navbar__toolbar {

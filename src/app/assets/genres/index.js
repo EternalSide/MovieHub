@@ -1,50 +1,49 @@
 // А почему бы и нет?
 
 import боевик from "./action.png";
-import приключения from "./adventure.png";
-import animation from "./animation.png";
-import comedy from "./comedy.png";
-import crime from "./crime.png";
-import documentary from "./documentary.png";
-import drama from "./drama.png";
-import family from "./family.png";
-import fantasy from "./fantasy.png";
-import horror from "./horror.png";
-import history from "./history.png";
-import mystery from "./mystery.png";
-import music from "./music.png";
-import romance from "./romance.png";
-import scienceFiction from "./science fiction.png";
-import thriller from "./thriller.png";
-import tvMovie from "./tv movie.png";
-import war from "./war.png";
-import western from "./western.png";
-
-import Популярные from "./popular.png";
-import topRated from "./top rated.png";
-import upcoming from "./upcoming.png";
+import приключения from "./travel.webp";
+import мультфильм from "./cartoon.png";
+import комедия from "./clown.png";
+import криминал from "./kriminal.png";
+import документальный from "./doc.png";
+import драма from "./drama.webp";
+import семейный from "./family.png";
+import фэнтези from "./fantasy.png";
+import ужасы from "./horror.png";
+import история from "./history.png";
+import детектив from "./mystery.png";
+import музыка from "./music.png";
+import мелодрама from "./romance.webp";
+import фантастика from "./fant.png";
+import триллер from "./triller.png";
+import телевизионные from "./tv.png";
+import военный from "./war.png";
+import вестерн from "./western.png";
+import популярные from "./popular.png";
+import топ from "./top.png";
+import скоро from "./time.png";
 
 export default {
   боевик,
   приключения,
-  animation,
-  comedy,
-  crime,
-  documentary,
-  drama,
-  family,
-  fantasy,
-  horror,
-  history,
-  mystery,
-  music,
-  romance,
-  "science fiction": scienceFiction,
-  thriller,
-  "tv movie": tvMovie,
-  war,
-  western,
-  Популярные,
-  "top rated": topRated,
-  upcoming,
+  мультфильм,
+  комедия,
+  криминал,
+  документальный,
+  драма,
+  семейный,
+  фэнтези,
+  ужасы,
+  история,
+  детектив,
+  музыка,
+  мелодрама,
+  фантастика,
+  триллер,
+  телевизионные,
+  военный,
+  вестерн,
+  популярные,
+  топ,
+  скоро,
 };

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  genreOrCategoryName: "",
+  genreIdOrCategoryName: "",
   page: 1,
   searchQuery: "",
+  genreName: "Главная",
 };
 
 export const genreOrCategory = createSlice({
@@ -11,11 +12,19 @@ export const genreOrCategory = createSlice({
   initialState,
   reducers: {
     selectGenreOrCategory: (state, action) => {
-      console.log(action.payload);
-      // state.genreOrCategoryName =
+      state.genreIdOrCategoryName = action.payload;
+      state.genreName = "";
+      state.searchQuery = "";
+    },
+    selectCategoryName: (state, action) => {
+      state.genreName = action.payload;
+    },
+    searchMovie: (state, action) => {
+      state.searchQuery = action.payload;
     },
   },
 });
 
-export const { selectGenreOrCategory } = genreOrCategory.actions;
+export const { selectGenreOrCategory, selectCategoryName, searchMovie } =
+  genreOrCategory.actions;
 export default genreOrCategory.reducer;

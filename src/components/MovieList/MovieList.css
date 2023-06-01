@@ -1,8 +1,11 @@
 .movielist {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: auto;
+}
+.movielist__title {
+  margin-left: 30px;
 }
 @media screen and (max-width: 660px) {
   .movielist {
