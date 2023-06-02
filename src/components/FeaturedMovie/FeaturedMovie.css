@@ -1,0 +1,43 @@
+.featuredmovie {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    height: 490px;
+    text-decoration: none;
+}
+.featuredmovie__card {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.featuredmovie__cardRoot {
+    position: relative;
+}
+.featuredmovie__card-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.575);
+    background-blend-mode: darken;
+}
+.tes {
+    z-index: 2;
+}
+.featuredmovie__info {
+    color: white;
+    width: 40%;
+}
+.featuredmovie__info-root {
+    position: relative;
+    background-color: transparent;
+}
+@media screen and (max-width: 660px) {
+    .featuredmovie__info {
+        color: white;
+        width: 100%;
+    }
+}

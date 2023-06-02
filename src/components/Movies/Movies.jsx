@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { Box, CircularProgress, useMediaQuery, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
-import { useGetMoviesQuery } from "../../app/services/TMDDB";
-import MovieList from "../MovieList/MovieList";
-import Error from "../Error";
-import Banner from "../Banner/Banner";
-import Pagination from "../Pagination/Pagination";
-import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { Box, CircularProgress } from '@mui/material';
+
+import { useGetMoviesQuery } from '../../app/services/TMDDB';
+import Error from '../Error';
+import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
+import MovieList from '../MovieList/MovieList';
+import Pagination from '../Pagination/Pagination';
+
 function Movies() {
-  const [page, setPage] = useState(1);
-  const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory);
+    const [page, setPage] = useState(1);
+    const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory);
 
-  const { data, error, isFetching } = useGetMoviesQuery({
-    genreIdOrCategoryName,
-    page,
-    searchQuery,
-  });
+    const { data, error, isFetching } = useGetMoviesQuery({
+        genreIdOrCategoryName,
+        page,
+        searchQuery,
+    });
+    console.log(data);
+    if (isFetching) {
+        return (
+            <Box display="flex" justifyContent="center">
+                <CircularProgress size="4rem" />
+            </Box>
+        );
+    }
 
-  if (isFetching) {
+    if (error) return <Error />;
     return (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress size="4rem" />
-      </Box>
+        <>
+            <FeaturedMovie movie={data.results[0]} />
+
+            <MovieList movies={data} numberOfMovies={19} deleteFirst />
+            <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
+        </>
     );
-  }
-
-  if (error) return <Error />;
-  return (
-    <>
-      {/* <Banner /> */}
-
-      <MovieList movies={data} numberOfMovies={18} />
-      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
-    </>
-  );
 }
 
 export default Movies;

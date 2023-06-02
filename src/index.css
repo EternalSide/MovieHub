@@ -1,45 +1,67 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
+    position: relative;
+}
+.watch-movie {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1011111111;
+    display: flex;
+
+    justify-content: center;
+}
+
+.kinoplayertop {
+    width: 500px;
+    height: 500px;
 }
 a {
-  text-decoration: none;
-  color: rgb(175, 14, 14);
+    text-decoration: none;
+    color: rgb(175, 14, 14);
 }
 .vpn__error {
-  max-width: 900px;
-  width: 100%;
+    max-width: 900px;
+    width: 100%;
 }
 .category {
-  color: red;
+    color: red;
 }
 
 .vpn {
-  border: none;
-  width: 150px;
-  height: 40px;
-  background-color: rgb(175, 14, 14);
-  color: white;
-  cursor: pointer;
+    border: none;
+    width: 150px;
+    height: 40px;
+    background-color: rgb(175, 14, 14);
+    color: white;
+    cursor: pointer;
 }
 
 .vpn:hover {
-  transition: 0.2s;
-  opacity: 0.8;
+    transition: 0.2s;
+    opacity: 0.8;
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+    width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #515156;
+    background: #515156;
 }
 ::-webkit-scrollbar-thumb {
-  background: #202024;
+    background: #202024;
+}
+
+.test {
+    height: 500px;
+    z-index: 1000;
 }

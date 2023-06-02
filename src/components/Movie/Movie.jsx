@@ -5,8 +5,6 @@ import Tooltip from '@mui/material/Tooltip';
 
 import { Link } from 'react-router-dom';
 
-import Banner from '../Banner/Banner';
-
 import './Movie.css';
 
 function Movie({ movie, i }) {

@@ -42,7 +42,7 @@ function App() {
                             <Route path="/profile/:id" element={<Profile />} />
                             <Route path="/movie/:id" element={<MovieInformation />} />
                             <Route path="/actors/:id" element={<Actors />} />
-                            <Route path="*" element="Error 404" />
+                            <Route path="*" element="Error 404" />\
                         </Routes>
                     </main>
                 </BrowserRouter>

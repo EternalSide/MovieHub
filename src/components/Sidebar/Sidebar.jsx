@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Box, CircularProgress, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
@@ -28,11 +28,13 @@ const categories = [
     },
 ];
 
-function Sidebar({ isDarkTheme }) {
+function Sidebar({ isDarkTheme, setMobileOpen }) {
     //Жанры RTQ
     const { data, isFetching } = useGetGenresQuery();
     const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
-
+    useEffect(() => {
+        setMobileOpen(false);
+    }, [genreIdOrCategoryName]);
     const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
     const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
     const dispatch = useDispatch();
@@ -103,7 +105,7 @@ function Sidebar({ isDarkTheme }) {
                             );
                         }
                         return (
-                            <Link to="/" key={id} className="sidebar__links">
+                            <Link to="/" key={id} className={'sidebar__links'}>
                                 <ListItemButton
                                     className="sidebar__menu-button"
                                     onClick={() => {

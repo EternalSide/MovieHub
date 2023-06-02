@@ -1,34 +1,36 @@
 .nav__drawer-paper::-webkit-scrollbar {
-  display: none;
-  border: 1px solid red;
+    display: none;
+    border: 1px solid red;
 }
-
+.sidebar {
+    z-index: 1000;
+}
 .sidebar__link {
-  display: flex;
-  justify-content: center;
-  padding: 10% 0%;
+    display: flex;
+    justify-content: center;
+    padding: 10% 0%;
 }
 .sidebar__image {
-  width: 170px;
-  margin-left: -10px;
+    width: 170px;
+    margin-left: -10px;
 }
 
 .sidebar__links {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 .sidebar__menu-button {
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
-  white-space: nowrap;
-  overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .sidebar__image:hover {
-  transition: 0.2s;
-  opacity: 0.8;
+    transition: 0.2s;
+    opacity: 0.8;
 }
 .sidebar__menu-item {
 }
 .sidebar__menu-item::first-letter {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
