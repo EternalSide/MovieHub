@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__button {
+  margin: 30px 2px;
+  background-color: rgb(255, 0, 0) !important;
+  color: white !important;
+  width: 125px;
+}
+.pagination__page-number {
+  margin: 0 20px !important;
+}

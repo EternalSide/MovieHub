@@ -76,9 +76,11 @@
 }
 @media screen and (max-width: 1200px) {
   .movieinfo__poster {
+    display: block;
     margin: 0 auto;
-    height: 350px;
+
     width: 50%;
+    margin-bottom: 15px;
   }
 }
 
@@ -101,6 +103,9 @@
     padding: 0.5rem 1rem;
   }
   .movieinfo__button-container {
+    flex-direction: column;
+  }
+  .movieinfo__rating {
     flex-direction: column;
   }
 }

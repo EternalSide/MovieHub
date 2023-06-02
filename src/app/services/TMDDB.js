@@ -57,13 +57,27 @@ export const tmdbApi = createApi({
     getMovie: builder.query({
       query: (id) => `movie/${id}?append_to_response=videos,credits&language=ru-RU&`,
     }),
+
     //Похожие фильмы
     getRecommendations: builder.query({
       query: ({ list, movieId }) => {
         return `/movie/${movieId}/${list}`;
       },
     }),
+    getActorsDetails: builder.query({
+      query: (actorId) => `/person/${actorId}?language=ru-RU`,
+    }),
+    getMoviesByActorId: builder.query({
+      query: ({ id, page }) => `/discover/movie?with_cast=${id}&page=${page}`,
+    }),
   }),
 });
 
-export const { useGetGenresQuery, useGetMoviesQuery, useGetMovieQuery, useGetRecommendationsQuery } = tmdbApi;
+export const {
+  useGetGenresQuery,
+  useGetMoviesQuery,
+  useGetMovieQuery,
+  useGetRecommendationsQuery,
+  useGetActorsDetailsQuery,
+  useGetMoviesByActorIdQuery,
+} = tmdbApi;

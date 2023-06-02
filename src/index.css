@@ -13,9 +13,33 @@ a {
   color: rgb(175, 14, 14);
 }
 .vpn__error {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
 }
 .category {
   color: red;
+}
+
+.vpn {
+  border: none;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(175, 14, 14);
+  color: white;
+  cursor: pointer;
+}
+
+.vpn:hover {
+  transition: 0.2s;
+  opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #515156;
+}
+::-webkit-scrollbar-thumb {
+  background: #202024;
 }
