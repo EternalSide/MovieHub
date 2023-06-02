@@ -19,13 +19,25 @@ function Pagination({ currentPage, totalPages, setPage }) {
     };
     return (
         <div className="pagination">
-            <Button onClick={handlePrev} className="pagination__button" variant="contained" color="primary" type="button">
+            <Button
+                onClick={handlePrev}
+                className="pagination__button"
+                variant="contained"
+                color="primary"
+                type="button"
+            >
                 Prev
             </Button>
             <Typography variant="h4" className="pagination__page-number">
                 Страница: {currentPage}
             </Typography>
-            <Button onClick={handleNext} className="pagination__button" variant="contained" color="primary" type="button">
+            <Button
+                onClick={handleNext}
+                className="pagination__button"
+                variant="contained"
+                color="primary"
+                type="button"
+            >
                 Next
             </Button>
         </div>

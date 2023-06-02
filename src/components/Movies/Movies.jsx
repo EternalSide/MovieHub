@@ -9,9 +9,11 @@ import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
 import MovieList from '../MovieList/MovieList';
 import Pagination from '../Pagination/Pagination';
 
-function Movies() {
+function Movies(isDarkTheme) {
     const [page, setPage] = useState(1);
-    const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory);
+    const { genreIdOrCategoryName, searchQuery } = useSelector(
+        (state) => state.currentGenreOrCategory,
+    );
 
     const { data, error, isFetching } = useGetMoviesQuery({
         genreIdOrCategoryName,
@@ -32,8 +34,17 @@ function Movies() {
         <>
             <FeaturedMovie movie={data.results[0]} />
 
-            <MovieList movies={data} numberOfMovies={19} deleteFirst />
-            <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
+            <MovieList
+                movies={data}
+                numberOfMovies={19}
+                deleteFirst
+                isDarkTheme={isDarkTheme}
+            />
+            <Pagination
+                currentPage={page}
+                setPage={setPage}
+                totalPages={data.total_pages}
+            />
         </>
     );
 }

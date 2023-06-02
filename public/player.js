@@ -24,8 +24,10 @@ function isVisibilityKinopPlayerTop(el) {
     }
     var rect = el.getBoundingClientRect();
     return (
-        (rect.top + el.clientHeight > 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight)) ||
-        (rect.bottom > 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+        (rect.top + el.clientHeight > 0 &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight)) ||
+        (rect.bottom > 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
     );
 }
 
@@ -120,7 +122,9 @@ function getDataKinoplayertop(el) {
         p = '';
     for (var data in options) {
         if (options.hasOwnProperty(data)) {
-            p += p ? '&' + data + '=' + encodeURIComponent(options[data]) : data + '=' + encodeURIComponent(options[data]);
+            p += p
+                ? '&' + data + '=' + encodeURIComponent(options[data])
+                : data + '=' + encodeURIComponent(options[data]);
         } else {
             options[data] = '';
         }
@@ -158,10 +162,16 @@ function runKinoplayertop(sel) {
 
     var options = getOptionsKinoplayertop(kinoplayertop);
 
-    var bg = options.bg && options.bg.replace(/[^0-9a-z]/gi, '') ? options.bg.replace(/[^0-9a-z]/gi, '') : 'transparent';
+    var bg =
+        options.bg && options.bg.replace(/[^0-9a-z]/gi, '')
+            ? options.bg.replace(/[^0-9a-z]/gi, '')
+            : 'transparent';
 
     var ratio = typeof options.ratio === 'undefined' ? '16by9' : options.ratio;
-    var classname = typeof options.classname === 'undefined' || options.classname.trim() === '' ? false : options.classname;
+    var classname =
+        typeof options.classname === 'undefined' || options.classname.trim() === ''
+            ? false
+            : options.classname;
     var ratio_arr = new Map([
         ['21by9', '42.85'],
         ['16by9', '56.25'],
@@ -275,18 +285,22 @@ function getResponseKinoplayertop(post = true, el = '') {
         updateStopPostKinoplayertop();
     }
 
-    httpGetAsyncKinoplayertop(window.location.protocol + '//kinoplayer.online', getDataKinoplayertop(el), function (players) {
-        if (typeof players.iframe === 'undefined' || !players.iframe.trim()) {
-            showErrorButtonKinoplayertop();
-            showHideKinoplayertopLoading('hide');
-            return false;
-        }
+    httpGetAsyncKinoplayertop(
+        window.location.protocol + '//kinoplayer.online',
+        getDataKinoplayertop(el),
+        function (players) {
+            if (typeof players.iframe === 'undefined' || !players.iframe.trim()) {
+                showErrorButtonKinoplayertop();
+                showHideKinoplayertopLoading('hide');
+                return false;
+            }
 
-        kinoplayertopIframe.setAttribute('src', players.iframe.trim());
-        setTimeout(function () {
-            showHideKinoplayertopLoading('hide');
-        }, 5000);
-    });
+            kinoplayertopIframe.setAttribute('src', players.iframe.trim());
+            setTimeout(function () {
+                showHideKinoplayertopLoading('hide');
+            }, 5000);
+        },
+    );
 }
 
 function httpGetAsyncKinoplayertop(url, body, callback) {

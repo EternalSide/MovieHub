@@ -35,6 +35,18 @@
     position: relative;
     background-color: transparent;
 }
+
+@media screen and (max-width: 1000px) {
+    .movie__info-text {
+        max-width: 1000px !important;
+        width: 100% !important;
+    }
+    .featuredmovie__info {
+        color: white;
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 660px) {
     .featuredmovie__info {
         color: white;

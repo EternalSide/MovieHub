@@ -1,7 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Box, CircularProgress, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
+import {
+    Box,
+    CircularProgress,
+    Divider,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    ListSubheader,
+} from '@mui/material';
 
 import { Link } from 'react-router-dom';
 
@@ -31,12 +41,16 @@ const categories = [
 function Sidebar({ isDarkTheme, setMobileOpen }) {
     //Жанры RTQ
     const { data, isFetching } = useGetGenresQuery();
-    const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
+    const { genreIdOrCategoryName } = useSelector(
+        (state) => state.currentGenreOrCategory,
+    );
     useEffect(() => {
         setMobileOpen(false);
     }, [genreIdOrCategoryName]);
-    const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
-    const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+    const redLogo =
+        'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
+    const blueLogo =
+        'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
     const dispatch = useDispatch();
 
     return (
@@ -49,7 +63,11 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                     dispatch(selectCategoryName('Главная'));
                 }}
             >
-                <img className="sidebar__image" src={isDarkTheme ? logo : logo} alt="Лого MovieHub" />
+                <img
+                    className="sidebar__image"
+                    src={isDarkTheme ? logo : logo}
+                    alt="Лого MovieHub"
+                />
             </Link>
             <Divider />
             <List>
@@ -57,6 +75,7 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                 {categories.map(({ label, value }) => (
                     <Link to="/" key={value} className="sidebar__links">
                         <ListItemButton
+                            sx={isDarkTheme ? { color: 'white' } : { color: 'black' }}
                             onClick={() => {
                                 dispatch(selectGenreOrCategory(value));
                                 dispatch(selectCategoryName(label));
@@ -64,12 +83,20 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                         >
                             {label === 'Топ рейтинга' && (
                                 <ListItemIcon>
-                                    <img src={genreIcons['топ']} className="sidebar__img" height={30} />
+                                    <img
+                                        src={genreIcons['топ']}
+                                        className="sidebar__img"
+                                        height={30}
+                                    />
                                 </ListItemIcon>
                             )}
                             {!(label === 'Топ рейтинга') && (
                                 <ListItemIcon>
-                                    <img src={genreIcons[label.toLowerCase()]} className="sidebar__img" height={30} />
+                                    <img
+                                        src={genreIcons[label.toLowerCase()]}
+                                        className="sidebar__img"
+                                        height={30}
+                                    />
                                 </ListItemIcon>
                             )}
                             <ListItemText primary={label} />
@@ -90,6 +117,11 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                             return (
                                 <Link to="/" key={id} className="sidebar__links">
                                     <ListItemButton
+                                        sx={
+                                            isDarkTheme
+                                                ? { color: 'white' }
+                                                : { color: 'black' }
+                                        }
                                         className="sidebar__menu-button"
                                         onClick={() => {
                                             dispatch(selectGenreOrCategory(id));
@@ -97,9 +129,16 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                                         }}
                                     >
                                         <ListItemIcon>
-                                            <img src={genreIcons['телевизионные']} className="sidebar__img" height={30} />
+                                            <img
+                                                src={genreIcons['телевизионные']}
+                                                className="sidebar__img"
+                                                height={30}
+                                            />
                                         </ListItemIcon>
-                                        <ListItemText className="sidebar__menu-item" primary={'Телевизионные'} />
+                                        <ListItemText
+                                            className="sidebar__menu-item"
+                                            primary={'Телевизионные'}
+                                        />
                                     </ListItemButton>
                                 </Link>
                             );
@@ -107,6 +146,11 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                         return (
                             <Link to="/" key={id} className={'sidebar__links'}>
                                 <ListItemButton
+                                    sx={
+                                        isDarkTheme
+                                            ? { color: 'white' }
+                                            : { color: 'black' }
+                                    }
                                     className="sidebar__menu-button"
                                     onClick={() => {
                                         dispatch(selectGenreOrCategory(id));
@@ -114,9 +158,16 @@ function Sidebar({ isDarkTheme, setMobileOpen }) {
                                     }}
                                 >
                                     <ListItemIcon>
-                                        <img src={genreIcons[name.toLowerCase()]} className="sidebar__img" height={30} />
+                                        <img
+                                            src={genreIcons[name.toLowerCase()]}
+                                            className="sidebar__img"
+                                            height={30}
+                                        />
                                     </ListItemIcon>
-                                    <ListItemText className="sidebar__menu-item" primary={name} />
+                                    <ListItemText
+                                        className="sidebar__menu-item"
+                                        primary={name}
+                                    />
                                 </ListItemButton>
                             </Link>
                         );

@@ -11,7 +11,10 @@ function FeaturedMovie({ movie }) {
     console.log(movie.backdrop_path);
     return (
         <Box component={Link} to={`/movie/${movie.id}`} className="featuredmovie">
-            <Card className="featuredmovie__card" classes={{ root: 'featuredmovie__cardRoot' }}>
+            <Card
+                className="featuredmovie__card"
+                classes={{ root: 'featuredmovie__cardRoot' }}
+            >
                 <CardMedia
                     title={movie.title}
                     className="featuredmovie__card-img"
@@ -20,11 +23,16 @@ function FeaturedMovie({ movie }) {
                     image={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
                 />
                 <Box padding="20px" className="tes">
-                    <CardContent className="featuredmovie__info" classes={{ root: 'featuredmovie__info-root}' }}>
+                    <CardContent
+                        className="featuredmovie__info"
+                        classes={{ root: 'featuredmovie__info-root}' }}
+                    >
                         <Typography variant="h5" gutterBottom>
                             {movie.title}
                         </Typography>
-                        <Typography variant="body2">{movie.overview}</Typography>
+                        <Typography className="movie__info-text" variant="body2">
+                            {movie.overview}
+                        </Typography>
                     </CardContent>
                 </Box>
             </Card>

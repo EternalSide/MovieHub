@@ -1,22 +1,27 @@
 import { useState } from 'react';
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import MenuIcon from '@mui/icons-material/Menu';
-import ModeNightIcon from '@mui/icons-material/ModeNight';
-import { AppBar, Avatar, Button, Drawer, IconButton, Toolbar, useMediaQuery } from '@mui/material';
+import {
+    AppBar,
+    Avatar,
+    Button,
+    Drawer,
+    IconButton,
+    Toolbar,
+    useMediaQuery,
+} from '@mui/material';
 
 import { Link } from 'react-router-dom';
 
-import { fetchToken } from '../../app/utils';
 import Search from '../Search/Search';
 import Sidebar from '../Sidebar/Sidebar';
 
 import './Navbar.css';
 
 function Navbar({ isDarkTheme, changeTheme }) {
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:660px)');
     const isAuthenticated = false;
     const [mobileOpen, setMobileOpen] = useState(false);
     return (
@@ -28,20 +33,26 @@ function Navbar({ isDarkTheme, changeTheme }) {
                             color="inherit"
                             edge="start"
                             style={{ outline: 'none' }}
-                            onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+                            onClick={() =>
+                                setMobileOpen((prevMobileOpen) => !prevMobileOpen)
+                            }
                             className="navbar__menu-button"
                         >
                             <MenuIcon />
                         </IconButton>
                     )}
 
-                    <IconButton onClick={() => changeTheme()} color="inherit" sx={{ ml: 1 }}>
+                    <IconButton
+                        onClick={() => changeTheme()}
+                        color="inherit"
+                        sx={{ ml: 1 }}
+                    >
                         {isDarkTheme ? <Brightness7Icon /> : <Brightness4Icon />}
                     </IconButton>
                     {!isMobile && <Search />}
                     <div>
                         {!isAuthenticated ? (
-                            <Button className="navbar__login-button" onClick={fetchToken} color="inherit">
+                            <Button className="navbar__login-button" color="inherit">
                                 Войти
                             </Button>
                         ) : (
@@ -71,16 +82,29 @@ function Navbar({ isDarkTheme, changeTheme }) {
                             variant="temporary"
                             anchor="left"
                             open={mobileOpen}
-                            onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+                            onClose={() =>
+                                setMobileOpen((prevMobileOpen) => !prevMobileOpen)
+                            }
                             className="nav__drawer"
                             classes={{ paper: 'nav__drawer-paper' }}
                             ModalProps={{ keepMounted: true }}
                         >
-                            <Sidebar className="sidebar" isDarkTheme={isDarkTheme} setMobileOpen={setMobileOpen} />
+                            <Sidebar
+                                className="sidebar"
+                                isDarkTheme={isDarkTheme}
+                                setMobileOpen={setMobileOpen}
+                            />
                         </Drawer>
                     ) : (
-                        <Drawer classes={{ paper: 'nav__drawer-paper' }} variant="permanent" open>
-                            <Sidebar isDarkTheme={isDarkTheme} setMobileOpen={setMobileOpen} />
+                        <Drawer
+                            classes={{ paper: 'nav__drawer-paper' }}
+                            variant="permanent"
+                            open
+                        >
+                            <Sidebar
+                                isDarkTheme={isDarkTheme}
+                                setMobileOpen={setMobileOpen}
+                            />
                         </Drawer>
                     )}
                 </nav>

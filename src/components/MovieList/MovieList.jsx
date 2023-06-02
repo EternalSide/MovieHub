@@ -5,7 +5,13 @@ import Movie from '../Movie/Movie';
 
 import './MovieList.css';
 
-function MovieList({ movies, numberOfMovies, recommendations, deleteFirst }) {
+function MovieList({
+    movies,
+    numberOfMovies,
+    recommendations,
+    deleteFirst,
+    isDarkTheme,
+}) {
     const { genreName } = useSelector((state) => state.currentGenreOrCategory);
     const startFrom = deleteFirst ? 1 : 0;
     return (
@@ -16,7 +22,8 @@ function MovieList({ movies, numberOfMovies, recommendations, deleteFirst }) {
                         'Популярные'
                     ) : (
                         <p>
-                            Результаты по запросу: <span className="category">{genreName} </span>{' '}
+                            Результаты по запросу:{' '}
+                            <span className="category">{genreName} </span>{' '}
                         </p>
                     )}
                 </h2>
@@ -26,7 +33,9 @@ function MovieList({ movies, numberOfMovies, recommendations, deleteFirst }) {
                 {movies?.results.length === 0 && <h3>Ничего не найдено :(</h3>}
 
                 {movies?.results.slice(startFrom, numberOfMovies).map((movie, i) => {
-                    return <Movie key={i} movie={movie} i={i} />;
+                    return (
+                        <Movie isDarkTheme={isDarkTheme} key={i} movie={movie} i={i} />
+                    );
                 })}
             </div>
         </div>

@@ -38,7 +38,10 @@ function App() {
                     <main className="app__content">
                         <div className="app__toolbar" />
                         <Routes>
-                            <Route path="/" element={<Movies />} />
+                            <Route
+                                path="/"
+                                element={<Movies isDarkTheme={isDarkTheme} />}
+                            />
                             <Route path="/profile/:id" element={<Profile />} />
                             <Route path="/movie/:id" element={<MovieInformation />} />
                             <Route path="/actors/:id" element={<Actors />} />

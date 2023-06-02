@@ -1,23 +1,11 @@
+// Сервис был полностью переписан на kinopoisk.dev API
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
-
-// const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWQ3NTg2ZDI1Y2FkZmU5Y2ViOGQ2NTY5ZTIyZTAwMCIsInN1YiI6IjY0NzFmNzAyOWFlNjEzMDBhODA2Yzg5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.33ln0fY0KcGQqTyJZRBNP9m2rS4Buw6T94c6toEuTNk'
-//     }
-//   };
-
-//   fetch('/movie/popular?language=en-US&page=1', options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));
+const baseUrl = 'https://api.themoviedb.org/3';
 export const tmdbApi = createApi({
     reducerPath: 'tmdbApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://api.themoviedb.org/3',
+        baseUrl: baseUrl,
         prepareHeaders: (headers, { getState }) => {
             headers.set('accept', 'application/json');
             headers.set(
@@ -37,12 +25,10 @@ export const tmdbApi = createApi({
         // Популярные
         getMovies: builder.query({
             query: ({ genreIdOrCategoryName, page, searchQuery }) => {
-                //По названию (поиску)
+                //Поиск (запрос на стрингу)
                 if (searchQuery) {
                     return `/search/movie?query=${searchQuery}&language=ru-RU&page=${page}`;
-                }
-
-                //Фильмы по названию и категории
+                } //Фильмы по названию и категории
                 if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
                     return `movie/${genreIdOrCategoryName}?language=ru-RU&page=${page}`;
                 }
@@ -54,9 +40,10 @@ export const tmdbApi = createApi({
                 return `/movie/popular?language=ru-RUpage=${page}`;
             },
         }),
-        //Получить фильм для MovieInfo
+        //Вся информация о фильме
         getMovie: builder.query({
-            query: (id) => `movie/${id}?append_to_response=videos,credits&language=ru-RU&`,
+            query: (id) =>
+                `movie/${id}?append_to_response=videos,credits&language=ru-RU&`,
         }),
 
         //Похожие фильмы
@@ -65,9 +52,11 @@ export const tmdbApi = createApi({
                 return `/movie/${movieId}/${list}`;
             },
         }),
+        //Инфо об Актере
         getActorsDetails: builder.query({
             query: (actorId) => `/person/${actorId}?language=ru-RU`,
         }),
+        //Фильмы в которых снимался Актер
         getMoviesByActorId: builder.query({
             query: ({ id, page }) => `/discover/movie?with_cast=${id}&page=${page}`,
         }),
