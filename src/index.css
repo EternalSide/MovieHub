@@ -32,6 +32,8 @@ a {
 .vpn__error {
     max-width: 900px;
     width: 100%;
+    margin-top: 6px;
+    margin-bottom: 12px;
 }
 .category {
     color: red;

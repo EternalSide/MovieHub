@@ -1,34 +1,20 @@
-import axios from 'axios';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { FavoriteBorderOutlined } from '@mui/icons-material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import LanguageIcon from '@mui/icons-material/Language';
+import { useDispatch } from 'react-redux';
 import MovieIcon from '@mui/icons-material/Movie';
-import PlusOneIcon from '@mui/icons-material/PlusOne';
-import RemoveIcon from '@mui/icons-material/Remove';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import {
     Box,
-    Button,
     ButtonGroup,
     CircularProgress,
     Grid,
     Modal,
     Rating,
     Typography,
-    useMediaQuery,
 } from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 
-import { Link, UseParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
-import genreIcons from '../../app/assets/genres/index';
 import { useGetMovieQuery } from '../../app/services/TMDDB';
 import { useGetRecommendationsQuery } from '../../app/services/TMDDB';
 import {
@@ -49,10 +35,7 @@ function MovieInformation() {
             movieId: id,
         });
 
-    const isMovieFavourited = true;
-    const isMovieWatchListed = false;
-    const addToFavourites = () => {};
-    const addToWatchList = () => {};
+
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     //Загрузка данных
